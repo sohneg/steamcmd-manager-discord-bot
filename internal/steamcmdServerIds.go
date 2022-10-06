@@ -11,13 +11,13 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-type Server struct{
-	AppID int `json:"appid"`
-	Subscriptionlinux string `json:"subscriptionlinux"`
-	Linux bool `json:"linux"`
+type Server struct {
+	AppID               int    `json:"appid"`
+	Subscriptionlinux   string `json:"subscriptionlinux"`
+	Linux               bool   `json:"linux"`
 	Subscriptionwindows string `json:"subscriptionwindows"`
-	Windows bool `json:"windows"`
-	Name string `json:"name"`
+	Windows             bool   `json:"windows"`
+	Name                string `json:"name"`
 }
 
 func readJSONFromUrl(url string) ([]Server, error) {
@@ -53,13 +53,13 @@ func SteamcmdServerIds(session *discordgo.Session, channel *discordgo.MessageCre
 
 	gameFound := false
 	for _, row := range serverList {
-		if strings.Contains(strings.ToLower(row.Name), a){
-			session.ChannelMessageSend(channel.ChannelID, "AppID: " + strconv.Itoa(row.AppID) + ": " +row.Name)
+		if strings.Contains(strings.ToLower(row.Name), a) {
+			session.ChannelMessageSend(channel.ChannelID, "AppID: "+strconv.Itoa(row.AppID)+": "+row.Name)
 			gameFound = true
-		} 
+		}
 	}
 
-	if gameFound == false{
+	if !gameFound {
 		session.ChannelMessageSend(channel.ChannelID, "No existing Server or typo.")
 	}
 }

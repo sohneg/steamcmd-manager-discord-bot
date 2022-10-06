@@ -1,6 +1,6 @@
 package steamcmd_sm
 
-var SERVER_IP_ADDRESS = CheckPublicIP()
+var SERVER_IP_ADDRESS = CheckPublicIP() + ":9876"
 
 const TOKEN = "OTc3NDg3ODU4ODYyNTQyOTM4.GOqRsS.CbR5141yjbSqX3IoDM6YzPHxBQ4OBa3-z0F7ZI"
 

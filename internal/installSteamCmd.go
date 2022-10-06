@@ -18,7 +18,7 @@ func CreateDirectory() {
 			log.Println(err)
 		}
 		fmt.Println("Created Folder")
-		
+
 		copy("steamcmd/steamcmd.exe", "steam/steamcmd.exe")
 
 		cmd := exec.Command("steam/steamcmd.exe")
@@ -27,13 +27,9 @@ func CreateDirectory() {
 		cmd.Stderr = os.Stderr
 
 		cmd.Start()
-		cmd.Wait()
-		
+
 		time.Sleep(30 * time.Second)
-		
-		cmd = exec.Command("login anonymous")
-		cmd.Start()
-		time.Sleep(30 * time.Second)
+
 	}
 }
 
