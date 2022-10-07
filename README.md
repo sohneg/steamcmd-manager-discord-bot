@@ -91,8 +91,8 @@ Install a dedicated server for the preferred game. Right now only for V Rising D
 
 Some of the commands that are planned or in work. It is planned to manage every SteamCMD Dedicated Server that exists.
 
-_`!list [game]`
-Search if server exists for game._
+`!list [game]`
+Search if server exists for game.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
