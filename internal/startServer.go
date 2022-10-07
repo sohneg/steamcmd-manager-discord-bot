@@ -6,8 +6,11 @@ import (
 )
 
 func startServer() {
-	cmd := exec.Command(`steam\steamapps\common\VRisingDedicatedServer\VRisingServer.exe`, `steam\steamapps\common\VRisingDedicatedServer\start_server_example.bat`)
+	cmd := exec.Command(`steam\steamapps\common\VRisingDedicatedServer\VRisingServer.exe`)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
-	cmd.Start()
+	cmd.Env = os.Environ()
+
+
+	cmd.Run()
 }
