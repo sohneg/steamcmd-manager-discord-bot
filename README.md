@@ -82,6 +82,9 @@ Stop the server.
 `!check`
 Check if the server is already running.
 
+`!install [game]`
+Install a dedicated server for the preferred game. Right now only for V Rising Dedicated Server.
+
 <br />
 
 ### Planned Commands
@@ -91,8 +94,6 @@ Some of the commands that are planned or in work. It is planned to manage every 
 _`!list [game]`
 Search if server exists for game._
 
-`!install [game]`
-Install a dedicated server for the preferred game.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
