@@ -24,4 +24,4 @@ go.work
 steam/
 
 # Discord Token
-discord_token.txt
+settings/discord_token.txt
