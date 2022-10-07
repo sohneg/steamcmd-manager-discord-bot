@@ -41,5 +41,3 @@ func SetupDiscordToken() {
 
 	time.Sleep(1 * time.Second)
 }
-
-//OTc3NDg3ODU4ODYyNTQyOTM4.G4NQG8.cVdADO8aib9VYYnGl-k715boax1hNC_3lncJJw
