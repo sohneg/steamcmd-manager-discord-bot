@@ -5,5 +5,6 @@ import (
 )
 
 func main() {
-	steamcmd_sm.CreateNewSession()
+	steamcmd_sm.SetupDiscordToken()
+	defer steamcmd_sm.CreateNewSession()
 }

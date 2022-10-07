@@ -34,12 +34,12 @@ func readMessages(session *discordgo.Session, msg *discordgo.MessageCreate) {
 		}
 
 	case STOP_SERVER:
-		m, _ := session.ChannelMessageSend(msg.ChannelID, "Server is stopping")
+		m, _ := session.ChannelMessageSend(msg.ChannelID, "Server is stopping (not functional yet)")
 		progressText(session, msg, m, "Server is stopping \n[", 2)
 		isRunning = false
 
 	case INSTALL_STEAMCMD:
-		session.ChannelMessageSend(msg.ChannelID, "Installing SteamCMD in root directory...")
+		session.ChannelMessageSend(msg.ChannelID, "Installing SteamCMD in root directory. This will take several minutes. Wait till the setting window opens.")
 		CreateDirectory()
 
 	case CHECK:
@@ -55,7 +55,7 @@ func readMessages(session *discordgo.Session, msg *discordgo.MessageCreate) {
 
 	if strings.Contains(lowerContent, SHOW_SERVER_LIST) {
 		SteamcmdServerIds(session, msg, lowerContent)
-
+		session.ChannelMessageSend(msg.ChannelID, "(not functional yet)")
 	}
 }
 

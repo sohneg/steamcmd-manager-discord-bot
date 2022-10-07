@@ -1,8 +1,5 @@
 package steamcmd_sm
 
-// Enter your token
-const TOKEN = ""
-
 // IP address will be searched auto.
 var SERVER_IP_ADDRESS = CheckPublicIP() + ":9876"
 
@@ -27,12 +24,13 @@ Stop the server.
 **!check**
 Check if the server is already running.
 
+**!install**
+Installs V Rising Dedicated Server. More comming.
+
 **!list [game]**
-Search if server exists for game.
+Search for game servers. Only server to install right now, is V Rising. But there will be over 500 diffrent servers!
 
 (All commands can be assigned to roles)`
-
-
 
 // Bot Info. Please do not change
 const BOT_INFO = `SteamCMD Server Manager Bot

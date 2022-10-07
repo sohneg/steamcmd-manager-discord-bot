@@ -7,7 +7,6 @@ import (
 	"log"
 	"os"
 	"os/exec"
-	"time"
 )
 
 func CreateDirectory() {
@@ -20,16 +19,19 @@ func CreateDirectory() {
 		fmt.Println("Created Folder")
 
 		copy("steamcmd/steamcmd.exe", "steam/steamcmd.exe")
+		copy("steamcmd/start_steamcmd.bat", "steam/start_steamcmd.bat")
 
-		cmd := exec.Command("steam/steamcmd.exe")
+		cmd := exec.Command("cmd", "/C", `cd D:\Coding\steamcmd-manager\steam && steamcmd +login anonymous +app_update 1829350 +quit`)
 
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 
-		cmd.Start()
-
-		time.Sleep(30 * time.Second)
-
+		cmd.Run()
+		// fmt.Println("\nServer is now installed! Plese configure your server settings and password.")
+		// cmd2 := exec.Command("cmd", "/C", `cd D:\Coding\steamcmd-manager\steam\steamapps\common\VRisingDedicatedServer && start notepad "start_server_example.bat"`)
+		// cmd3 := exec.Command("cmd", "/C", `cd D:\Coding\steamcmd-manager\steam\steamapps\common\VRisingDedicatedServer\VRisingServer_Data\StreamingAssets\Settings && start notepad "ServerHostSettings.json"`)
+		// cmd2.Run()
+		// cmd3.Run()
 	}
 }
 

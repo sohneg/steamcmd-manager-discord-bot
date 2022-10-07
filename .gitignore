@@ -20,4 +20,8 @@
 # Go workspace file
 go.work
 
+# Server Files
 steam/
+
+# Discord Token
+discord_token.txt
