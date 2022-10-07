@@ -106,7 +106,7 @@ Install a dedicated server for the preferred game.
 - [ ] Add basic funtionality (!stop)
 - [ ] Add funtionality for installing other server (!install)
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/sohneg/steamcmd-manager-discord-bot/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -139,6 +139,4 @@ See `LICENSE.txt` for more information.
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/sohneg/steamcmd-manager-discord-bot]
