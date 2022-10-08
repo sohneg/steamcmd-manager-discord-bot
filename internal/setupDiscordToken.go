@@ -6,10 +6,12 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 	"time"
 )
 
 var TOKEN string
+var INSTALLATION_PATH string
 
 func SetupDiscordToken() {
 	path := `settings\discord_token.txt`
@@ -39,5 +41,28 @@ func SetupDiscordToken() {
 		TOKEN = string(myString)
 	}
 
+	setupInstallationPath()
 	time.Sleep(1 * time.Second)
+}
+
+func setupInstallationPath() {
+	ex, err := os.Executable()
+	if err != nil {
+		panic(err)
+	}
+	exPath := filepath.Dir(ex)
+
+	var path = "settings/installation_path.txt"
+	INSTALLATION_PATH = exPath
+	fmt.Printf("Bot installed in %s\n", INSTALLATION_PATH)
+	newFile, err := os.Create(path)
+	if err != nil {
+		fmt.Println("Could not create installation_path.txt. Error: ", err)
+	}
+	defer newFile.Close()
+
+	_, writeErr := newFile.WriteString(exPath)
+	if writeErr != nil {
+		fmt.Println("Could not write to installation_path.txt. Error: ", err)
+	}
 }
