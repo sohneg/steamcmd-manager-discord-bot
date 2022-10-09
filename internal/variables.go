@@ -20,14 +20,14 @@ const COMMANDS = `You can use this commands to manage your steamcmd dedicated se
 **!start**
 Start the server.	
 
-**!stop**
-Stop the server.
+**!stop_admin**
+Stop the server. Not functional yet! Server has to be stopped manually + in the Discord Server !stop_admin has to be called. If not, the server can't be started again.
 
 **!check**
 Check if the server is already running.
 
 **!install**
-Installs V Rising Dedicated Server. More comming.
+Installs V Rising Dedicated Server. More servers comming...
 
 **!list [game]**
 Search for game servers. Only server to install right now, is V Rising. But there will be over 500 diffrent servers!
@@ -36,5 +36,6 @@ Search for game servers. Only server to install right now, is V Rising. But ther
 
 // Bot Info. Please do not change
 const BOT_INFO = `SteamCMD Server Manager Bot
-Version: 1.0a
-Author: Simon S.`
+Version: 1.1a
+Author: Simon S.
+Date: 09.10.2022`
