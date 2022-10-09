@@ -23,7 +23,9 @@ func readMessages(session *discordgo.Session, msg *discordgo.MessageCreate) {
 		session.ChannelMessageSend(msg.ChannelID, COMMANDS)
 
 	case START_SERVER:
+
 		if !isRunning {
+			IS_PROGRESS = true
 			startServer()
 			m, _ := session.ChannelMessageSend(msg.ChannelID, "Server is starting, please wait")
 			progressText(session, msg, m, "Server is starting, please wait \n[", 2)
@@ -40,11 +42,17 @@ func readMessages(session *discordgo.Session, msg *discordgo.MessageCreate) {
 
 	case INSTALL_STEAMCMD:
 		if !IS_INSTALLED {
-			session.ChannelMessageSend(msg.ChannelID, "Installing SteamCMD in root directory. This will take several minutes.")
-			CreateDirectory()
-		} else {
-			session.ChannelMessageSend(msg.ChannelID, "V Rising Server is already installed. !start to start the server, or !check to check if the server is running.")
+			m, _ := session.ChannelMessageSend(msg.ChannelID, "Installing SteamCMD in root directory. This will take several minutes")
+			IS_PROGRESS = true
+			//CreateDirectory()
+			go func() {
+				for ok := true; ok; ok = IS_PROGRESS {
+					progressText(session, msg, m, "Installing SteamCMD in root directory. This will take several minutes\n[", 1)
+				}
+			}()
+			InstallSteamCMD_Plus_Server()
 		}
+		session.ChannelMessageSend(msg.ChannelID, SERVER_NAME+" Server is installed.")
 
 	case CHECK:
 		if isRunning {
@@ -61,10 +69,10 @@ func readMessages(session *discordgo.Session, msg *discordgo.MessageCreate) {
 		SteamcmdServerIds(session, msg, lowerContent)
 		session.ChannelMessageSend(msg.ChannelID, "(not functional yet)")
 	}
+
 }
 
 func progressText(session *discordgo.Session, channel *discordgo.MessageCreate, m *discordgo.Message, text string, wait time.Duration) {
-
 	loading := make(map[int]string)
 	loading[1] = "#"
 	loading[2] = "##"
@@ -78,7 +86,11 @@ func progressText(session *discordgo.Session, channel *discordgo.MessageCreate, 
 	loading[10] = "##########"
 
 	for i := 0; i <= 10; i++ {
+		if !IS_PROGRESS {
+			break
+		}
 		time.Sleep(wait * time.Second)
 		session.ChannelMessageEdit(channel.ChannelID, m.ID, text+loading[i]+"]")
 	}
+
 }

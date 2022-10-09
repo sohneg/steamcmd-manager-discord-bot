@@ -54,7 +54,9 @@ func setupInstallationPath() {
 
 	var path = "settings/installation_path.txt"
 	INSTALLATION_PATH = exPath
+
 	fmt.Printf("Bot installed in %s\n", INSTALLATION_PATH)
+
 	newFile, err := os.Create(path)
 	if err != nil {
 		fmt.Println("Could not create installation_path.txt. Error: ", err)

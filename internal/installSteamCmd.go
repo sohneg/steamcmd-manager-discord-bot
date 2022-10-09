@@ -9,7 +9,7 @@ import (
 	"os/exec"
 )
 
-func CreateDirectory() {
+func InstallSteamCMD_Plus_Server() bool {
 	path := "steam"
 	if _, err := os.Stat(path); errors.Is(err, os.ErrNotExist) {
 		err := os.Mkdir(path, os.ModePerm)
@@ -26,13 +26,12 @@ func CreateDirectory() {
 		cmd.Stderr = os.Stderr
 
 		cmd.Run()
-		// fmt.Println("\nServer is now installed! Plese configure your server settings and password.")
-		// cmd2 := exec.Command("cmd", "/C", `cd %s\steam\steamapps\common\VRisingDedicatedServer && start notepad "start_server_example.bat"`, INSTALLATION_PATH)
-		// cmd3 := exec.Command("cmd", "/C", `cd %s\steam\steamapps\common\VRisingDedicatedServer\VRisingServer_Data\StreamingAssets\Settings && start notepad "ServerHostSettings.json"`, INSTALLATION_PATH)
-		// cmd2.Run()
-		// cmd3.Run()
+
+		fmt.Println("\nServer is now installed! Please configure your server settings and password.")
 	}
 	IS_INSTALLED = true
+	IS_PROGRESS = false
+	return true
 }
 
 func copy(src, dst string) (int64, error) {

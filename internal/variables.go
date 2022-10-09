@@ -12,7 +12,11 @@ const SHOW_SERVER_LIST = "!list"
 const VERSION = "!version"
 const INSTALL_STEAMCMD = "!install"
 
+// Variables
+var SERVER_NAME = "V Rising"
+
 var IS_INSTALLED bool = false
+var IS_PROGRESS bool = true
 
 // Discord Output !help
 const COMMANDS = `You can use this commands to manage your steamcmd dedicated server on you localhost:
