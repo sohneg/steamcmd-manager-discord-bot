@@ -76,8 +76,8 @@ You can use these commands to manage your Steamcmd Dedicated Server.
 `!start`
 Start the server.
 
-`!stop`
-Stop the server.
+`!stop_admin`
+Stop the server. Not functional yet! Server has to be stopped manually + in the Discord Server !stop_admin has to be called. If not, the server can't be started again.
 
 `!check`
 Check if the server is already running.
