@@ -32,6 +32,7 @@ func CreateDirectory() {
 		// cmd2.Run()
 		// cmd3.Run()
 	}
+	IS_INSTALLED = true
 }
 
 func copy(src, dst string) (int64, error) {

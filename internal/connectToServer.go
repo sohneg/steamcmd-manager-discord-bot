@@ -9,9 +9,9 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-func CreateNewSession(){
+func CreateNewSession() {
 	dg, err := discordgo.New("Bot " + TOKEN)
-	if err != nil{
+	if err != nil {
 		fmt.Println("Error while creating session ", err)
 		return
 	}
@@ -21,14 +21,14 @@ func CreateNewSession(){
 	dg.Identify.Intents = discordgo.IntentGuildMembers | discordgo.IntentGuildMessages
 
 	err = dg.Open()
-	if err != nil{
+	if err != nil {
 		fmt.Println("Error while opening connection ", err)
 	}
 
-	fmt.Println("Server Manager is now running. Press CTRL-C to exit...")
+	fmt.Println("Server Manager is now running. Do not close this window. Press CTRL-C to stop the bot.")
 
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt)
-	<- sc
+	<-sc
 	dg.Close()
 }

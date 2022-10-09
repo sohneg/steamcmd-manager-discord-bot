@@ -39,8 +39,12 @@ func readMessages(session *discordgo.Session, msg *discordgo.MessageCreate) {
 		isRunning = false
 
 	case INSTALL_STEAMCMD:
-		session.ChannelMessageSend(msg.ChannelID, "Installing SteamCMD in root directory. This will take several minutes. Wait till the setting window opens.")
-		CreateDirectory()
+		if !IS_INSTALLED {
+			session.ChannelMessageSend(msg.ChannelID, "Installing SteamCMD in root directory. This will take several minutes.")
+			CreateDirectory()
+		} else {
+			session.ChannelMessageSend(msg.ChannelID, "V Rising Server is already installed. !start to start the server, or !check to check if the server is running.")
+		}
 
 	case CHECK:
 		if isRunning {

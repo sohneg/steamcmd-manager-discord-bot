@@ -12,6 +12,8 @@ const SHOW_SERVER_LIST = "!list"
 const VERSION = "!version"
 const INSTALL_STEAMCMD = "!install"
 
+var IS_INSTALLED bool = false
+
 // Discord Output !help
 const COMMANDS = `You can use this commands to manage your steamcmd dedicated server on you localhost:
 
