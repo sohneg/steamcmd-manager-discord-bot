@@ -14,13 +14,20 @@ var TOKEN string
 var INSTALLATION_PATH string
 
 func SetupDiscordToken() {
-	path := `settings\discord_token.txt`
-	_, err := os.Stat(path)
-	if errors.Is(err, os.ErrNotExist) {
+	settingsDir := "settings"
+	err := os.MkdirAll(settingsDir, os.ModePerm)
+	if err != nil {
+		fmt.Println("Could not create settings directory. Error:", err)
+		return
+	}
 
+	path := filepath.Join(settingsDir, "discord_token.txt")
+	_, err = os.Stat(path)
+	if errors.Is(err, os.ErrNotExist) {
 		newFile, err := os.Create(path)
 		if err != nil {
-			fmt.Println("Could not create discord_token.txt. Error: ", err)
+			fmt.Println("Could not create discord_token.txt. Error:", err)
+			return
 		}
 		defer newFile.Close()
 
@@ -32,13 +39,13 @@ func SetupDiscordToken() {
 
 		_, writeErr := newFile.WriteString(input.Text())
 		if writeErr != nil {
-			fmt.Println("Could not write to discord_token.txt. Error: ", err)
+			fmt.Println("Could not write to discord_token.txt. Error:", err)
 		}
 
 	} else {
 		content, _ := ioutil.ReadFile(path)
 		myString := string(content)
-		TOKEN = string(myString)
+		TOKEN = myString
 	}
 
 	setupInstallationPath()
